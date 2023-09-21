@@ -1,0 +1,13 @@
+package 연산자test;
+
+import javax.swing.JOptionPane;
+
+public class test02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String yesterday = JOptionPane.showInputDialog("암호를 입력해주세요");
+		String today = JOptionPane.showInputDialog("암호를 입력해주세요");
+	}
+
+}

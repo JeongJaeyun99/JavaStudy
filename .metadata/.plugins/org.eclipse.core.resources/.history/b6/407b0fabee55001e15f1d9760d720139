@@ -1,0 +1,16 @@
+package 테스트;
+
+public class Print {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String name = "홍길동";
+		int age = 200;
+		String live = "홍천";
+		double height = 88.8;
+		boolean programmer = true;
+		char color = 'y';
+		System.out.println("친구의 이름은 " + name + "이고, 나이는 "+  age + "세이다.");
+	}
+
+}

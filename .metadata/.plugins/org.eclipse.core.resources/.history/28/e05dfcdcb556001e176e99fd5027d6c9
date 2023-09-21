@@ -1,0 +1,14 @@
+package 제어문.순차문;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class 화면만들기 {
+
+	public static void main(String[] args) {
+		
+		JFrame f = new JFrame(); 
+		JButton b = new JButton();
+	}
+
+}

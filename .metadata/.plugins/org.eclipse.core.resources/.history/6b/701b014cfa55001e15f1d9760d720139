@@ -1,0 +1,13 @@
+package test;
+
+import javax.swing.JOptionPane;
+
+public class Exam01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String garo1 = JOptionPane.showInputDialog("가로는?");
+		String sero1 = JOptionPane.showInputDialog("가로는?");
+	}	
+
+}

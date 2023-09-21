@@ -1,0 +1,13 @@
+package 연습;
+
+import javax.swing.JOptionPane;
+
+public class Exam02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String height1 = JOptionPane.showInputDialog("당신의 키는?");
+		double = Double.parseDouble(height);
+	}
+
+}

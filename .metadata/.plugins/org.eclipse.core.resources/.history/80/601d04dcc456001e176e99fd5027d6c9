@@ -1,0 +1,17 @@
+package 제어문.순차문;
+
+import javax.swing.JOptionPane;
+
+public class test3 {
+
+	public static void main(String[] args) {
+		
+		String n1 = JOptionPane.showInputDialog("n1 : ");
+		String n2 = JOptionPane.showInputDialog("n2 : ");
+		
+		int n1 = Integer.parseInt(n1);
+		int n2 = Integer.parseInt(n2);
+		
+	}
+
+}
