@@ -11,7 +11,7 @@ public class test4 {
 		
 		String result = "오늘 " + day + "에 수업후 나는 " + play + "할 예정";
 		
-		System.out.println("결과는 : " + result);
+		System.out.println(result);
 	}
 
 }
