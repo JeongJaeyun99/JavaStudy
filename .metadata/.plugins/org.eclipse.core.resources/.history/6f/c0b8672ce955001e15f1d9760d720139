@@ -1,7 +1,0 @@
-package 테스트;
-
-public class Hi3 {
-	public static void main(String[] args) {
-		
-	}
-}
