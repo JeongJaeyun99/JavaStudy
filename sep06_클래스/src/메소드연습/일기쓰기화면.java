@@ -24,7 +24,7 @@ public class 일기쓰기화면 {
 		f.setTitle("일기장 쓰기 화면");
 		f.setSize(550,700);
 		
-		f.getContentPane().setBackground(Color.white);;
+		f.getContentPane().setBackground(Color.white);
 		Font font = new Font("맑은 고딕",1,35);
 		Font font2 = new Font("맑은 고딕",1,50);
 		
