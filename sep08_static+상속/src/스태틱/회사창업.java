@@ -13,7 +13,7 @@ public class 회사창업 {
 		System.out.println(work3);
 		System.out.println("현재 직원의 수는 " + 직원.people + "명 입니다.");
 		
-		System.out.println("평균나이는 " + 직원.ageSum / 직원.people  + "이다.");
+		System.out.println("평균나이는 " + 직원.getAvg()  + "세 이다.");
 	}
 
 }
