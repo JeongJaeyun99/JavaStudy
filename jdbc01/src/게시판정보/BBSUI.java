@@ -1,4 +1,4 @@
-package 회원정보;
+package 게시판정보;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -13,17 +13,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import db연결.MemberDAO;
-
-public class 회원정보_UI extends JFrame{
+public class BBSUI extends JFrame{
 	
 	FlowLayout flow;
 	Font font;
-	JLabel j1,j2,j3,j4,j5;
-	JTextField t2,t3,t4,t5;
+	JLabel j1,j3,j4,j5;
+	JTextField t3,t4,t5;
 	JButton yes,no,upd;
 	ImageIcon icon;
-	public 회원정보_UI() {
+	public BBSUI() {
 		setSize(500,900);
 		flow = new FlowLayout();
 		setLayout(flow);
@@ -33,25 +31,21 @@ public class 회원정보_UI extends JFrame{
 		
 		font = new Font("맑은 고딕",Font.BOLD,30);
 		j1 = new JLabel();
-		j2 = new JLabel("아이디 ");
-		t2 = new JTextField(10);
-		j3 = new JLabel("패스워드 ");
+		j3 = new JLabel("게시판 제목 ");
 		t3 = new JTextField(10);
-		j4 = new JLabel("이름 ");
+		j4 = new JLabel("게시판 내용");
 		t4 = new JTextField(10);
-		j5 = new JLabel("전화번호 ");
+		j5 = new JLabel("게시판 작성자 ");
 		t5 = new JTextField(10);
 		
 		icon = new ImageIcon("naver.png");
 		j1.setIcon(icon);
 		
-		yes = new JButton("회원가입 요청");
-		no = new JButton("회원탈퇴 요청");
-		upd = new JButton("회원정보 수정");
+		yes = new JButton("게시물 작성 요청");
+		no = new JButton("게시물 삭제 요청");
+		upd = new JButton("게시물 수정 요청");
 		
 		j1.setFont(font);
-		j2.setFont(font);
-		t2.setFont(font);
 		j3.setFont(font);
 		t3.setFont(font);
 		j4.setFont(font);
@@ -62,8 +56,6 @@ public class 회원정보_UI extends JFrame{
 		no.setFont(font);
 		upd.setFont(font);
 		
-		t2.setBackground(Color.pink);
-		t2.setForeground(Color.red);
 		t3.setBackground(Color.pink);
 		t3.setForeground(Color.red);
 		t4.setBackground(Color.pink);
@@ -75,8 +67,6 @@ public class 회원정보_UI extends JFrame{
 		upd.setForeground(Color.blue);
 		
 		add(j1); // 이미지
-		add(j2); // 아이디
-		add(t2);  
 		add(j3); // 비밀번호
 		add(t3);
 		add(j4); // 이름
@@ -91,17 +81,15 @@ public class 회원정보_UI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String id = t2.getText();
-				String pw = t3.getText();
-				String name = t4.getText();
-				String tel = t5.getText();
+				String title = t3.getText();
+				String content = t4.getText();
+				String writer = t5.getText();
 				
-				MemberDAO dao = new MemberDAO();
+				BbsDAO dao = new BbsDAO();
 				
-				dao.insert(id,pw,name,tel);
+				dao.insert(title,content,writer);
 				
-				JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!");
-				t2.setText("");
+				JOptionPane.showMessageDialog(null, "게시물 작성이 완료 되었습니다!");
 				t3.setText("");
 				t4.setText("");
 				t5.setText("");
@@ -112,12 +100,14 @@ public class 회원정보_UI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String id = JOptionPane.showInputDialog("탈퇴할 id를 입력해주세요");
-				MemberDAO dao = new MemberDAO();
+				String noS = JOptionPane.showInputDialog("삭제할 게시물의 no를 입력해주세요");
+				int no = Integer.parseInt(noS);
 				
-				dao.delete(id);
+				BbsDAO dao = new BbsDAO();
 				
-				JOptionPane.showMessageDialog(null, "회원탈퇴가 완료 되었습니다!");
+				dao.delete(no);
+				
+				JOptionPane.showMessageDialog(null, "게시물 삭제가 완료 되었습니다!");
 			}
 		});
 		
@@ -125,21 +115,25 @@ public class 회원정보_UI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String tel = JOptionPane.showInputDialog("수정할 tel를 입력해주세요");
-				String id = JOptionPane.showInputDialog("수정할 id를 입력해주세요");
-				MemberDAO dao = new MemberDAO();
+				String title = JOptionPane.showInputDialog("수정할 게시물의 제목을 입력해주세요");
+				String content = JOptionPane.showInputDialog("수정할 게시물의 내용을 입력해주세요");
+				String noS = JOptionPane.showInputDialog("수정할 게시물의 no를 입력해주세요");
+				int no = Integer.parseInt(noS);
 				
-				dao.update(tel,id);
+				BbsDAO dao = new BbsDAO();
 				
-				JOptionPane.showMessageDialog(null, "회원정보 수정이 완료 되었습니다!");
+				dao.update(title,content,no);
+				
+				JOptionPane.showMessageDialog(null, "게시물 수정이 완료 되었습니다!");
 			}
 		});
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
+	
 	public static void main(String[] args) {
-		회원정보_UI ui = new 회원정보_UI();
+		BBSUI ui = new BBSUI();
 	}
 
 }
