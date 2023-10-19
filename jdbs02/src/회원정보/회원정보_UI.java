@@ -108,9 +108,12 @@ public class 회원정보_UI extends JFrame{
 				vo.setName(name);
 				vo.setTel(tel);
 				
-				dao.insert(vo);
-				
-				JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!");
+				int result = dao.insert(vo);
+				if(result == 1) {
+					JOptionPane.showMessageDialog(null, "회원가입이 완료 되었습니다!");					
+				}else {
+					JOptionPane.showMessageDialog(null, "회원가입에 실패 하였습니다!");										
+				}
 				t2.setText("");
 				t3.setText("");
 				t4.setText("");
@@ -129,9 +132,10 @@ public class 회원정보_UI extends JFrame{
 				
 				vo.setId(id);
 				
-				dao.delete(vo);
-				
-				JOptionPane.showMessageDialog(null, "회원탈퇴가 완료 되었습니다!");
+				int result = dao.delete(vo);
+				if(result == 1) {
+					JOptionPane.showMessageDialog(null, "회원탈퇴가 완료 되었습니다!");
+				}
 			}
 		});
 		
@@ -149,9 +153,10 @@ public class 회원정보_UI extends JFrame{
 				vo.setId(id);
 				
 				
-				dao.update(vo);
-				
-				JOptionPane.showMessageDialog(null, "회원정보 수정이 완료 되었습니다!");
+				int result = dao.update(vo);
+				if(result == 1) {
+					JOptionPane.showMessageDialog(null, "회원정보 수정이 완료 되었습니다!");
+				}
 			}
 		});
 		

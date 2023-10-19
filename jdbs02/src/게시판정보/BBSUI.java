@@ -95,9 +95,18 @@ public class BBSUI extends JFrame{
 				
 				BbsDAO dao = new BbsDAO();
 				
-				dao.insert(title,content,writer);
+				BbsVO vo = new BbsVO();
 				
-				JOptionPane.showMessageDialog(null, "게시물 작성이 완료 되었습니다!");
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setWriter(writer);
+				
+				int result = dao.insert(vo);
+				if(result == 1) {
+					JOptionPane.showMessageDialog(null, "게시물 추가 완료 되었습니다!");					
+				}else {
+					JOptionPane.showMessageDialog(null, "게시물 추가에 실패 하였습니다!");										
+				}
 				t3.setText("");
 				t4.setText("");
 				t5.setText("");
@@ -113,7 +122,11 @@ public class BBSUI extends JFrame{
 				
 				BbsDAO dao = new BbsDAO();
 				
-				dao.delete(no);
+				BbsVO vo = new BbsVO();
+				
+				vo.setNo(no);
+				
+				dao.delete(vo);
 				
 				JOptionPane.showMessageDialog(null, "게시물 삭제가 완료 되었습니다!");
 			}
@@ -130,7 +143,13 @@ public class BBSUI extends JFrame{
 				
 				BbsDAO dao = new BbsDAO();
 				
-				dao.update(title,content,no);
+				BbsVO vo = new BbsVO();
+				
+				vo.setTitle(title);
+				vo.setContent(content);
+				vo.setNo(no);
+				
+				dao.update(vo);
 				
 				JOptionPane.showMessageDialog(null, "게시물 수정이 완료 되었습니다!");
 			}
@@ -146,12 +165,13 @@ public class BBSUI extends JFrame{
 				
 				// one(id)호출
 				
-				String noI = JOptionPane.showInputDialog("아이디를 입력해주세요 : ");
+				String noI = JOptionPane.showInputDialog("게시물의 index를 입력해주세요 : ");
 				int no = Integer.parseInt(noI);
 				
 				BbsDAO dao = new BbsDAO();
 				
-				dao.one(no);
+				BbsVO vo = dao.one(no);
+				JOptionPane.showMessageDialog(null, vo);
 			}
 		});
 		

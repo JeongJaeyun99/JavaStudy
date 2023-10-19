@@ -146,15 +146,12 @@ public class productUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String id = JOptionPane.showInputDialog("삭제할 상품정보의 id를 입력해주세요");
-				productDAO dao = new productDAO();
+				productDAO dao = new productDAO();				
 				
-				productVO vo = new productVO();
-				
-				vo.setId(id);
-				
-				dao.delete(vo);
-				
-				JOptionPane.showMessageDialog(null, "상품정보 삭제가 완료 되었습니다!");
+				int result = dao.delete(id);
+				if(result == 1) {
+					JOptionPane.showMessageDialog(null, "상품정보 삭제가 완료 되었습니다!");					
+				}
 			}
 		});
 		
@@ -166,15 +163,10 @@ public class productUI extends JFrame{
 				String id = JOptionPane.showInputDialog("수정할 상품의 id를 입력해주세요");
 				productDAO dao = new productDAO();
 				
-				productVO vo = new productVO();
-				
-				vo.setImg(img);
-				vo.setId(id);
-				
-				
-				dao.update(vo);
-				
-				JOptionPane.showMessageDialog(null, "상품의 이미지 수정이 완료 되었습니다!");
+				int result = dao.update(img,id);
+				if(result == 1) {
+					JOptionPane.showMessageDialog(null, "상품의 이미지 수정이 완료 되었습니다!");
+				}
 			}
 		});
 		
@@ -186,11 +178,8 @@ public class productUI extends JFrame{
 				
 				productDAO dao = new productDAO();
 				
-				productVO vo = new productVO();
-				
-				vo.setId(id);
-				
-				dao.one(vo);
+				productVO vo = dao.one(id);
+				JOptionPane.showMessageDialog(null, vo);
 			}
 		});
 		

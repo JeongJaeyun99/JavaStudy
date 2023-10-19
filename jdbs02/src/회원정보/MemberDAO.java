@@ -8,7 +8,8 @@ import java.sql.ResultSet;
 
 public class MemberDAO {
 	
-	public void insert(회원정보VO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+	public int insert(회원정보VO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+		int result = 0;
 		try {
 			// 1. 연결할 부품(커넥터,driver)
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -34,15 +35,16 @@ public class MemberDAO {
 //				URL site = new URL(siteN);
 			System.out.println("3. sql문 생성성공....!");
 			
-			ps.execute();
+			result = ps.executeUpdate();
 			System.out.println("4. sql문 mysql로 전송 성공!");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("오류 발생!!!!");
 		} 
-		
+		return result;
 	} // class
-	public void delete(회원정보VO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+	public int delete(회원정보VO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+		int result = 0;
 		try {
 			// 1. 연결할 부품(커넥터,driver)
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -65,16 +67,19 @@ public class MemberDAO {
 //				URL site = new URL(siteN);
 			System.out.println("3. sql문 생성성공....!");
 			
-			ps.execute();
+			result = ps.executeUpdate();
 			System.out.println("4. sql문 mysql로 전송 성공!");
+			conn.close();
+			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("오류 발생!!!!");
 		} 
-		
+		return result;
 	}// delete
 	
-	public void update(회원정보VO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+	public int update(회원정보VO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+		int result = 0;
 		try {
 			// 1. 연결할 부품(커넥터,driver)
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -98,13 +103,15 @@ public class MemberDAO {
 //				URL site = new URL(siteN);
 			System.out.println("3. sql문 생성성공....!");
 			
-			ps.execute();
+			result = ps.executeUpdate();
 			System.out.println("4. sql문 mysql로 전송 성공!");
+			conn.close();
+			ps.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("오류 발생!!!!");
 		} 
-		
+		return result;
 	}// update
 	
 	public 회원정보VO one(String id) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
@@ -122,7 +129,7 @@ public class MemberDAO {
 			
 			String sql = "select * from member where id = ? ";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, vo.getId());
+			ps.setString(1, id);
 			System.out.println("3. sql문 생성성공....!");
 			
 			ResultSet table = ps.executeQuery(); // 테이블로 mysql로 받아온다.
@@ -144,6 +151,7 @@ public class MemberDAO {
 			}else {
 				System.out.println("검색결과가 없음.");
 			}
+			table.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("오류 발생!!!!");

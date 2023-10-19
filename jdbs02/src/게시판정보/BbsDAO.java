@@ -8,7 +8,8 @@ import java.sql.ResultSet;
 
 public class BbsDAO {
 	
-	public void insert(String title,String content,String writer) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+	public int insert(BbsVO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+		int result = 0;
 		try {
 			// 1. 연결할 부품(커넥터,driver)
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,22 +27,22 @@ public class BbsDAO {
 			
 			String sql = "insert into bbs values (null, ?, ?, ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, title);
-			ps.setString(2, content);
-			ps.setString(3, writer);
-//				String siteN = "http://www.naver.com";
-//				URL site = new URL(siteN);
+			ps.setString(1, vo.getTitle());
+			ps.setString(2, vo.getContent());
+			ps.setString(3, vo.getWriter());
+
 			System.out.println("3. sql문 생성성공....!");
 			
-			ps.execute();
+			result = ps.executeUpdate();
 			System.out.println("4. sql문 mysql로 전송 성공!");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("오류 발생!!!!");
-		} 
+		}
+		return result;
 		
 	} // class
-	public void delete(int no) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+	public void delete(BbsVO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
 		try {
 			// 1. 연결할 부품(커넥터,driver)
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -59,7 +60,7 @@ public class BbsDAO {
 			
 			String sql = "delete from bbs where no = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, no);
+			ps.setInt(1, vo.getNo());
 //				String siteN = "http://www.naver.com";
 //				URL site = new URL(siteN);
 			System.out.println("3. sql문 생성성공....!");
@@ -73,7 +74,7 @@ public class BbsDAO {
 		
 	}// delete
 	
-	public void update(String title,String content,int no) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+	public void update(BbsVO vo) { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
 		try {
 			// 1. 연결할 부품(커넥터,driver)
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -91,9 +92,9 @@ public class BbsDAO {
 			
 			String sql = "update bbs set title = ?,  content = ? where no = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, title);
-			ps.setString(2, content);
-			ps.setInt(3, no);
+			ps.setString(1, vo.getTitle());
+			ps.setString(2, vo.getContent());
+			ps.setInt(3, vo.getNo());
 //				String siteN = "http://www.naver.com";
 //				URL site = new URL(siteN);
 			System.out.println("3. sql문 생성성공....!");
