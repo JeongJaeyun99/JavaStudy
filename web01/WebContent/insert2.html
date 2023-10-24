@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		background: pink;
+	}
+	*{
+		text-align: center;
+		font-size: 20px;
+	}
+	.left{
+		width: 100px;
+		background: blue;
+		color: white;
+	}
+	input{
+		background: lightblue;
+	}
+	textarea{
+		background: lightblue;
+	}
+</style>
+</head>
+<body>
+	<h3>게시판 화면</h3>
+	<hr color="red">
+	<a href = "index.html">첫 페이지로 이동</a>
+	<a href = "bbs.html">이전 페이지로 이동</a>
+	<form action = "insert2.jsp">
+		<table border = "1" align = "center">
+			<tr>
+				<td class = "left">제목 : </td>
+				<td>
+					<input name = "title" >
+				</td>
+			</tr>	
+			<tr>
+				<td class = "left">내용 : </td>
+				<td>
+					<textarea rows="5" cols="20" name = "content"></textarea>
+				</td>
+			</tr>	
+			<tr>
+				<td class = "left">작성자 : </td>
+				<td>
+					<input name = "writer" >
+				</td>
+			</tr>	
+			<tr>
+				<td colspan = "2">
+					<button type="submit">게시글 올리기</button>
+					<!-- <input type = "submit" value="회원가입요청"> -->
+					<!-- 주석 : 컨트롤 +쉬프트 +슬러시 -->
+					<!-- form은 전송용 버튼이다. -->
+				</td>
+			</tr>	
+		</table>
+	</form>
+</body>
+</html>
