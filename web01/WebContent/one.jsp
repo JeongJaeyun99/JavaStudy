@@ -1,4 +1,5 @@
-<%@page import="bean.BbsDAO"%>
+<%@ page import="bean.MemberVO"%>
+<%@ page import="bean.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- 
@@ -13,20 +14,14 @@
      	// 미리 톰켓에서 자주 사용하는 부품은 new를 이용해서 객체를 만드어놓았음
      	// 미리 만들어서 제공하는 객체 >> 내장된 객체
      	// 클라이언트로 부터 데이터를 받아오는 객체 >> request
-     	String no2 = request.getParameter("no");    	
-     	int no = Integer.parseInt(no2);
+     	String id = request.getParameter("id");    	
+     	
      	
      	// 2. DAO에 데이터를 주소 db처리 요청
-     	BbsDAO dao = new BbsDAO();
+     	MemberDAO dao = new MemberDAO();
      	
-     	int result = dao.delete(no);
+     	MemberVO vo = dao.one(id);
      	
-     	String resultText = "게시글삭제에 실패함.";
-     	String resultImg = "3.png";
-     	if(result == 1){
-     		resultText = "게시글삭제에 성공함.";
-     		resultImg = "1.png";
-     	}
      	
      	// 3. 결과를 html로 만들어서 클라이언트에 전송     	
      	
@@ -38,9 +33,11 @@
 <title>Insert title here</title>
 </head>
 <body bgcolor = "red">
-	<h3><%= resultText %></h3>
+	<h3>회원 <%= id %>님의 회원정보 검색 결과</h3>
 	<hr color = "blue">
-	<%= no %>
-	<img src="img/<%= resultImg %>">
+	회원 ID : <%= vo.getId() %><br>
+	회원 PW : <%= vo.getPw() %><br>
+	회원 이름 : <%= vo.getName() %><br>
+	회원 전화번호 : <%= vo.getTel() %><br>
 </body>
 </html>

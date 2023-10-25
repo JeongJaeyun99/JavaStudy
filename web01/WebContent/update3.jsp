@@ -1,4 +1,5 @@
-<%@page import="bean.BbsDAO"%>
+<%@page import="bean.ProductVO"%>
+<%@page import="bean.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!-- 
@@ -13,18 +14,17 @@
      	// 미리 톰켓에서 자주 사용하는 부품은 new를 이용해서 객체를 만드어놓았음
      	// 미리 만들어서 제공하는 객체 >> 내장된 객체
      	// 클라이언트로 부터 데이터를 받아오는 객체 >> request
-     	String no2 = request.getParameter("no");    	
-     	int no = Integer.parseInt(no2);
-     	
+     	String content = request.getParameter("content");    	     	
+     	String id = request.getParameter("id");
      	// 2. DAO에 데이터를 주소 db처리 요청
-     	BbsDAO dao = new BbsDAO();
+     	ProductDAO dao = new ProductDAO();
      	
-     	int result = dao.delete(no);
+     	int result = dao.update(content,id);
      	
-     	String resultText = "게시글삭제에 실패함.";
+     	String resultText = "상품 정보 삭제에 실패함.";
      	String resultImg = "3.png";
      	if(result == 1){
-     		resultText = "게시글삭제에 성공함.";
+     		resultText = "상품 정보 삭제에 성공함.";
      		resultImg = "1.png";
      	}
      	
@@ -40,7 +40,8 @@
 <body bgcolor = "red">
 	<h3><%= resultText %></h3>
 	<hr color = "blue">
-	<%= no %>
+	아이디 : <%= id %><br>
+	내용 : <%= content %><br>
 	<img src="img/<%= resultImg %>">
 </body>
 </html>

@@ -3,6 +3,7 @@ package bean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 
@@ -32,19 +33,11 @@ public class BbsDAO { // member테이블에 crud를 하고 싶으면 MemberDAO�
 			System.out.println("4. SQL문 mySQL로 전송 성공!!");
 			//System.out.println(table.next()); //table안에 데이터가 있으면 true
 			if(table.next()) { //table안에 검색결과인 row가 있는지 체크 
-				int no2 = table.getInt("no");
-				String title = table.getString("title");
-				String content = table.getString("content");
-				String writer = table.getString("writer");
-				//JOptionPane.showMessageDialog(null, title + " " + "");
-				System.out.println(no2);
-				System.out.println(title);
-				System.out.println(content);
-				System.out.println(writer);
-				bag.setNo(no2);
-				bag.setTitle(title);
-				bag.setContent(content);
-				bag.setWriter(writer);
+				bag.setNo(table.getInt("no"));
+				bag.setTitle(table.getString("title")); 
+				bag.setContent(table.getString("content"));
+				bag.setWriter(table.getString("writer"));
+				dbcp.freeConnection(con,ps,table);
 			}else {
 				System.out.println("검색결과가 없음.");
 			}
@@ -123,5 +116,31 @@ public class BbsDAO { // member테이블에 crud를 하고 싶으면 MemberDAO�
 		}
 		return result;
 	} // update
+	
+	public ArrayList<BbsVO> list() { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+		ArrayList<BbsVO> list = new ArrayList<BbsVO>();
+		try {			
+			String sql = "select * from bbs";
+			PreparedStatement ps = con.prepareStatement(sql);
+			System.out.println("3. sql문 생성성공....!");
+			
+			ResultSet table = ps.executeQuery(); // 테이블로 mysql로 받아온다.
+			System.out.println("4. sql문 mysql로 전송 성공!");
+			while(table.next()) {
+				BbsVO bag = new BbsVO(); 
+				bag.setNo(Integer.parseInt(table.getString("no")));
+				bag.setTitle(table.getString("title"));
+				bag.setContent(table.getString("content"));
+				bag.setWriter(table.getString("writer"));
+				// 인덱스로 가져와도 되는데, db와 관련된 인덱스는 1부터 시작한다.
+				list.add(bag);
+			}
+			dbcp.freeConnection(con,ps,table);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("오류 발생!!!!");
+		} 
+		return list;
+	}// select(all)
 
 } // class

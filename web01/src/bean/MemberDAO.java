@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MemberDAO {
 	
@@ -96,26 +97,44 @@ public class MemberDAO {
 			System.out.println("4. sql문 mysql로 전송 성공!");
 //			System.out.println(table.next()); // table안에 데이터가 있으면 true,없으면 false
 			if(table.next()) {
-				String id2 = table.getString("id");
-				String pw = table.getString("pw");
-				String name = table.getString("name");
-				String tel = table.getString("tel");
-				System.out.println(id2);
-				System.out.println(pw);
-				System.out.println(name);
-				System.out.println(tel);
-				vo.setId(id2);
-				vo.setPw(pw);
-				vo.setName(name);
-				vo.setTel(tel);
-				dbcp.freeConnection(conn,ps,table);
+				vo.setId(table.getString("id"));
+				vo.setPw(table.getString("pw"));
+				vo.setName(table.getString("name"));
+				vo.setTel(table.getString("tel"));
+				// 인덱스로 가져와도 되는데, db와 관련된 인덱스는 1부터 시작한다.
 			}else {
 				System.out.println("검색결과가 없음.");
 			}
+			dbcp.freeConnection(conn,ps,table);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("오류 발생!!!!");
 		} 
 		return vo;
-	}// select
+	}// select(one)
+	public ArrayList<MemberVO> list() { // member 테이블에 crud를 하고싶으면 MemberDAO를 사용하면됨
+		ArrayList<MemberVO> list = new ArrayList<MemberVO>();
+		try {			
+			String sql = "select * from member";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			System.out.println("3. sql문 생성성공....!");
+			
+			ResultSet table = ps.executeQuery(); // 테이블로 mysql로 받아온다.
+			System.out.println("4. sql문 mysql로 전송 성공!");
+			while(table.next()) {
+				MemberVO bag = new MemberVO(); 
+				bag.setId(table.getString("id"));
+				bag.setPw(table.getString("pw"));
+				bag.setName(table.getString("name"));
+				bag.setTel(table.getString("tel"));
+				// 인덱스로 가져와도 되는데, db와 관련된 인덱스는 1부터 시작한다.
+				list.add(bag);
+			}
+			dbcp.freeConnection(conn,ps,table);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("오류 발생!!!!");
+		} 
+		return list;
+	}// select(all)
 }// class
