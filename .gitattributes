@@ -2,3 +2,4 @@
 *.java linguist-detectable=true 
 *.py linguist-detectable=false
 *.css linguist-detectable=false
+*.html linguist-detectable=false
