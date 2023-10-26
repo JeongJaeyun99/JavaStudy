@@ -48,11 +48,9 @@
 <body bgcolor = "red">
 <table border = "1" align = "center">
 	<tr>
-		<td class = "left">ID</td>
-		<td class = "left">이름</td>
-		<td class = "left">내용</td>
+		<td class = "left">상품번호</td>
+		<td class = "left">상품이름</td>
 		<td class = "left">가격</td>
-		<td class = "left">회사</td>
 		<td class = "left">이미지</td>
 	</tr>
 <% 
@@ -61,10 +59,11 @@ for(ProductVO bag: list){
 	<tr>
 		<td><%= bag.getId() %></td>
 		<td><%= bag.getName() %></td>
-		<td><%= bag.getContent() %></td>
 		<td><%= bag.getPrice() %></td>
-		<td><%= bag.getCompany() %></td>
-		<td><%= bag.getImg() %></td>
+		<td>
+			<img src="img/<%= bag.getImg() %>" width = "100",height = "100">
+			<%-- <%= bag.getImg() %> --%>
+		</td>
 	</tr>
 <% }%>
 </table>
