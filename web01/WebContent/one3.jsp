@@ -67,7 +67,7 @@
 			<tr>
 				<td class="left">이미지 : </td>
 				<td>
-					<%= bag.getImg() %>
+					<img src="img/<%=bag.getImg()%>">
 				</td>
 			</tr>
 		</table>

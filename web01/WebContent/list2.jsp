@@ -51,14 +51,14 @@
 		<td class = "left">No</td>
 		<td class = "left">제목</td>
 		<td class = "left">내용</td>
-		<td class = "left">작성자</td>
+		<td class = "left">작성자</td>	
 	</tr>
 <% 
 for(BbsVO bag: list){
 %>	
 	<tr>
 		<td><%= bag.getNo() %></td>
-		<td><%= bag.getTitle() %></td>
+		<td><a href = "one2.jsp?no=<%= bag.getNo() %>"><%= bag.getTitle() %></a></td>
 		<td><%= bag.getContent() %></td>
 		<td><%= bag.getWriter() %></td>
 	</tr>

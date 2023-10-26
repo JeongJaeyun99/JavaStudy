@@ -52,6 +52,7 @@
 		<td class = "left">비밀번호</td>
 		<td class = "left">이름</td>
 		<td class = "left">전화번호</td>
+		<td class = "left">상세정보</td>
 	</tr>
 <% 
 for(MemberVO bag: list){
@@ -61,6 +62,11 @@ for(MemberVO bag: list){
 		<td><%= bag.getPw() %></td>
 		<td><%= bag.getName() %></td>
 		<td><%= bag.getTel() %></td>
+		<td>
+			<a href = "one.jsp?id=<%= bag.getId() %>">
+				<button>상세정보보기</button>
+			</a>
+		</td>
 	</tr>
 <% }%>
 </table>

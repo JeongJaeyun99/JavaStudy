@@ -58,7 +58,7 @@ for(ProductVO bag: list){
 %>	
 	<tr>
 		<td><%= bag.getId() %></td>
-		<td><%= bag.getName() %></td>
+		<td><a href = "one3.jsp?id=<%= bag.getId() %>"><%= bag.getName() %></a></td>
 		<td><%= bag.getPrice() %></td>
 		<td>
 			<img src="img/<%= bag.getImg() %>" width = "100",height = "100">
