@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% 
-    	int view = (int)session.getAttribute("view");
+    <%
+    	String name = (String)session.getAttribute("name");
+    	int age = (int)session.getAttribute("age");
     %>
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	저장된 세선값은 : <%= view %>
+	이름 : ${name}<br>
+	나이 : ${age}<br>
+	내년의 나이 : <%= age+1 %>세	<br>
 </body>
 </html>
