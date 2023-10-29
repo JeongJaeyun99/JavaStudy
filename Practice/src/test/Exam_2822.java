@@ -1,38 +1,43 @@
 package test;
 
-
 import java.util.*;
 
 public class Exam_2822 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int arr[] = new int[8];
-		int clone[] = new int[8];
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = sc.nextInt();
-			clone[i] = arr[i];
-		}
 		int sum = 0;
-		Arrays.sort(arr); 
-		for (int i = 7; i >= 3; i--) {
-			sum += arr[i];
+		int list[] = new int[8];
+		int max = Integer.MIN_VALUE;
+		for (int i = 0; i < list.length; i++) {
+			list[i] = sc.nextInt();
 		}
-		System.out.println(sum);
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		for (int i = arr.length-1; i > 2; i--) {
-			for (int j = 0; j < clone.length; j++) {
-				if(list.size() == 5) {
-					break;
-				}
-				if(arr[i] == clone[j]) {
-					list.add(j);
-				}
+		int temp = 0;
+		int idx[] = new int[5];
+		int cnt = 0;
+		int j = 0;
+		while (true) {
+			for (int i = 0; i < list.length; i++) {
+				if(max < list[i]) {
+					max = list[i];
+					temp = i;
+				}							
+			}
+			sum += max;
+			idx[j] = temp+1;
+			j++;
+			list[temp] = -1;
+			temp = 0;
+			max = -1;
+			cnt++;
+			if(cnt == 5){
+				break;
 			}
 		}
-		for (int i = 0; i < list.size(); i++) {
-			System.out.print(list.remove(i) + " ");
+		System.out.println(sum);
+		Arrays.sort(idx);
+		for (int i = 0; i < idx.length; i++) {
+			System.out.print(idx[i] + " ");
 		}
 	}
-
 }

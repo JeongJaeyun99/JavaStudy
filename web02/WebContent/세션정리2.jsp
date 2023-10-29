@@ -11,6 +11,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	수강료 : <%= money1 + money2 %>원
+	테니스와 수영 둘다 수강 할 시 수강료 : <%= money1 + money2 %>원
 </body>
 </html>

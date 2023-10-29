@@ -9,8 +9,8 @@
 <body>
 	<h3>로그인 화면 입니다.</h3>
 	<form action="로그인세션설정.jsp" method="post">
-		<input name="id" value="apple"><br>
-		<input name="pw" value="1234"><br>
+		<input name="id"><br> <!-- value = apple -->
+		<input name="pw"><br> <!-- value = 1234 -->
 		<button type="submit">로그인</button>
 	</form>
 </body>
