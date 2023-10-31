@@ -44,7 +44,7 @@
 						<td width="200">작성자</td>
 						<td width="300">
 						<!-- type="hidden"이면 input이 안보임. 값은 전달됨 -->
-						<input 	name="writer" style="height: 100px;" 
+						<input 	name="writer" type="hidden" style="height: 100px;" 
 								value="<%=session.getAttribute("id")%>" >
 								<!-- <input name="writer" value="apple"> -->
 						</td>

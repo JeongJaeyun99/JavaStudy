@@ -77,11 +77,27 @@
 	                            <a href="delete.jsp?id=<%= bag.getId() %>">
 	                                <button class="btn btn-dark">삭제</button>
 	                            </a>
-                            <%}}%>
+                             	<%}%>
+                             <%}%>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <center>
+				<a href="bbs.jsp">
+					<button class="btn btn-danger">리스트로</button>
+				</a>
+				<% if(session.getAttribute("id") != null) {
+					if(session.getAttribute("id").equals(bag.getWriter())){%>
+						<a href="update.jsp">
+							<button class="btn btn-danger">수정하기</button>
+						</a>
+						<a href="delete.jsp">
+							<button class="btn btn-danger">삭제하기</button>
+						</a>
+					<% } %>
+				<% } %>
+			</center>
         </div>        
     </div>
 </body>

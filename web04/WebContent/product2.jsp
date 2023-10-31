@@ -40,19 +40,19 @@
    				<table border="1" class="table table-hover">
    					<tr>
    						<td rowspan="5"><img src="img/<%= bag2.getImg() %>"></td>
-   						<td>상품 아이디 : <%= bag2.getId() %></td>
+   						<td><span class="badge bg-primary">상품 아이디</span><%= bag2.getId() %></td>
    					</tr>
     				<tr>
-   						<td>상품 제목 : <%= bag2.getTitle() %></td>
+   						<td><span class="badge bg-primary">상품 제목</span><%= bag2.getTitle() %></td>
    					</tr>
    					<tr>
-   						<td>상품 설명 : <%= bag2.getContent() %></td>
+   						<td><span class="badge bg-primary">상품 설명</span><%= bag2.getContent() %></td>
    					</tr>
    					<tr>
-   						<td>상품 가격 : <%= bag2.getPrice() %></td>
+   						<td><span class="badge bg-primary">상품 가격</span><%= bag2.getPrice() %></td>
    					</tr>
    					<tr>	
-   						<td>상품 회사 : <%= bag2.getCompany() %></td>
+   						<td><span class="badge bg-primary">상품 회사</span><%= bag2.getCompany() %></td>
    					</tr>
    					<tr>
 						<td colspan="2" class="alert alert-Warning">
