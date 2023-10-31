@@ -32,6 +32,33 @@
 			<% if(session.getAttribute("id") != null ) { %>
 			<%= session.getAttribute("id") %>님 환영합니다.
 			<% } %>
+			<br>
+			<hr color="blue">
+			<form action="update2.jsp">
+				<input name="id" value="<%= bag2.getId() %>" type="hidden">
+					<table border="1"  class="table table-hover">
+						<tr  class="table-warning">
+							<td width="200">제목</td>
+							<td width="300"><input name="title" value="<%= bag2.getTitle() %>"></td>
+						</tr>
+						<tr  class="table-warning">
+							<td width="200">내용</td>
+							<td width="300"><textarea name="content" rows="10"><%= bag2.getContent() %></textarea></td>
+						</tr>
+						<tr  class="table-warning">
+							<td width="200">작성자</td>
+							<td width="300">
+								<input name="writer" value="${id}" readonly="readonly">
+							</td>
+						</tr>
+						<tr  class="table-warning">
+							<td width="200" colspan="2">
+								<button type="submit" class="btn btn-info">수정하기</button>
+							</td>
+						</tr>
+					</table>
+			</form>
+			
 		</div>
 	</div>
 </body>
