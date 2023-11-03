@@ -29,6 +29,7 @@
 				<a href="logout.jsp">
 					<button class="btn btn-outline-danger">로그아웃</button>
 				</a>
+			<% } %>
 				<%
 	   				ProductDAO dao = new ProductDAO();
 	   				ArrayList<ProductDTO> list = dao.list();
@@ -53,7 +54,7 @@
 						<% } %>
 					</tbody>
 				</table>
-			<% } %>
+			
 		</div>
 	</div>
 </body>
