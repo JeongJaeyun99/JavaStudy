@@ -25,7 +25,7 @@
 							},
 							success : function(result) {
 								console.log(result)
-								if(result == '1'){
+								if(result.trim() == '1'){
 									console.log('성공적으로 데이터가 추가되었습니다.')
 						    	}else{
 						    		console.log('데이터 추가에 실패하였습니다!')
@@ -34,6 +34,21 @@
 							}
 						})
 					})
+				}
+			})
+		})// $
+		$('#b2').click(function() {
+			$.ajax({
+				url:"data/car.xml",
+				success : function(xml) {
+					list = $(xml).find('record')
+					$('div').empty()
+					for(let i = 0;i < list.length;i++){
+						id = $(list[i]).find('id').text()
+						email = $(list[i]).find('email').text()
+						car = $(list[i]).find('car').text()
+						$('div').append(id + " 이메일 : " + email + " 자동차 브랜드 : " + car + "<br>")
+					}
 				}
 			})
 		})

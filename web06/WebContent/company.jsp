@@ -12,13 +12,49 @@
 			$.ajax({
 				url: "data/company_mock.json",
 				success: function(json) {
-					alert('데이터의 갯수 : ' + json.length + '개')
-					for(let i = 0;i<json.length;i++){
-						console.log('id : ' + json[i].id)
-						console.log('name : ' + json[i].name)
-						console.log('addr : ' + json[i].addr)
-						console.log('tel : ' + json[i].tel)
-						console.log('domain : ' + json[i].domain)
+					$(json).each(function(i,one) {
+						idValue = one.id
+						nameValue = one.name
+						addrValue = one.addr
+						telValue = one.tel
+						domainValue = one.domain
+						$.ajax({
+							url : "db_create2.jsp",
+							data : {
+								id : idValue,
+								name: nameValue,
+								addr : addrValue,
+								tel : telValue,
+								domain : domainValue,
+							},
+							async : false,
+							success : function(result) {
+								if(result.trim() == 1){
+									console.log('db에 추가 성공!')
+								}else{
+									console.log('db에 추가 실패...')									
+								}
+								
+							}
+						})						
+					})
+					
+				}
+			})
+		})// $
+		$('#b2').click(function() {
+			$.ajax({
+				url:"data/company_mock.xml",
+				success : function(xml) {
+					list = $(xml).find('record')
+					$('div').empty()
+					for(let i = 0;i < list.length;i++){
+						id = $(list[i]).find('id').text()
+						name = $(list[i]).find('name').text()
+						addr = $(list[i]).find('addr').text()
+						tel = $(list[i]).find('tel').text()
+						domain = $(list[i]).find('domain').text()
+						$('div').append(id + " 이름 : " + name + " 주소 : " + addr + " 전화번호 : " + tel + " 도메인 : " + domain + "<br>")
 					}
 				}
 			})
