@@ -1,0 +1,30 @@
+{
+	"name": "서울특별시 용산구_흡연구역",
+	"description": "서울특별시 용산구 흡연구역 현황(자치구명, 시설구분, 시설형태, 서울특별시 용산구 설치 위치, 위도, 경도)에 대한 데이터를 제공합니다.",
+	"url": "https://www.data.go.kr/data/15073796/fileData.do",
+	"keywords": [
+		"흡연,담배,흡연시설"
+	],
+	"license": "https://data.go.kr/ugs/selectPortalPolicyView.do",
+	"dateCreated": "2020-11-25",
+	"dateModified": "2023-03-16",
+	"datePublished": "2020-11-25",
+	"creator": {
+		"name": "서울특별시 용산구",
+		"contactPoint": {
+			"contactType": "스마트정보과",
+			"telephone": "+82-0221996634",
+			"@type": "ContactPoint"
+		},
+		"@type": "Organization"
+	},
+	"distribution": [
+		{
+			"encodingFormat": "CSV",
+			"contentUrl": "https://www.data.go.kr/cmm/cmm/fileDownload.do?atchFileId=FILE_000000002702565&fileDetailSn=1&insertDataPrcus=N",
+			"@type": "DataDownload"
+		}
+	],
+	"@context": "https://schema.org",
+	"@type": "Dataset"
+}
