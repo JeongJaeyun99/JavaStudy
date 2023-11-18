@@ -2,7 +2,7 @@ package test;
 
 import java.util.Scanner;
 
-public class Test {
+public class Exam_3135 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
@@ -12,18 +12,16 @@ public class Test {
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = sc.nextInt();
 		}
-		int cnt = 0;
-		
-		int temp1 = Math.abs(a-b);
+		int cnt =  Math.abs(a-b);
 		for (int i = 0; i < arr.length; i++) {
 			if(b == arr[i]) {
-				temp1 = 1;
+				cnt = 1;
 				break;
 			}
-			if(temp1 > Math.abs(b-arr[i])+1 ) {
-				temp1 = Math.abs(b-arr[i])+1;
+			if(cnt > Math.abs(b-arr[i])+1 ) {
+				cnt = Math.abs(b-arr[i])+1;
 			}
 		}
-		System.out.println(temp1);
+		System.out.println(cnt);
     }
 }
