@@ -10029,3 +10029,6 @@ org.eclipse.ecf.filetransfer.BrowseFileTransferException: HttpComponents connect
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
 !SUBENTRY 1 org.eclipse.ecf.identity 4 0 2023-11-22 09:11:27.609
 !MESSAGE HttpComponents connection error response code 308.
+
+!ENTRY org.eclipse.jdt.debug 2 0 2023-11-22 14:30:35.794
+!MESSAGE Unable to find location of java.lang.Thread.setName() in debuggee JVM, for type java.lang.Thread
