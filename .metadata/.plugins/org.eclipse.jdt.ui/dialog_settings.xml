@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\jaeyun\Downloads"/>
+	<item key="org.eclipse.jdt.ui.last.selected.jre.kind2" value="0"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item key="group_libraries" value="true"/>
 		<item key="layout" value="2"/>
@@ -88,6 +89,7 @@
 		<item key="JarManifestWizardPage.MANIFEST_LOCATION" value=""/>
 		<item key="JarManifestWizardPage.SEAL_JAR" value="false"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="C:\Users\jaeyun\Downloads\arrayPrint2.jar"/>
 			<item value="C:\Users\jaeyun\Downloads\home.jar"/>
 		</list>
 	</section>
