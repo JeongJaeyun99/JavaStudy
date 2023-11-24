@@ -34,7 +34,8 @@ public class 배열을컬렉션으로3 {
 		}
 		String s4[] = list0.toArray(new String[0]);
 		System.out.println(Arrays.toString(s4));
-		
+		list0.add(3,"김종민");
+		System.out.println(list0);
 	}
 
 }
