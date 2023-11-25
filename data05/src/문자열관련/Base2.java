@@ -7,16 +7,34 @@ public class Base2 {
 
 	public static void main(String[] args) {
 		
-		Solution00 s = new Solution00();
-		int[] num_list = {1, 2, 3, 4, 5};
-		int[] result = s.solution(num_list);
-		System.out.println(Arrays.toString(result));
+		Solution s = new Solution();
+		String t = "3141592";
+		String p = "271";
+		int result = s.solution(t,p);
+		System.out.println(result);
 	}
 }
 
-class Solution00 {
-	public int[] solution(int[] num_list) {
-		int[] answer = null;
-		return answer;
-	}
+class Solution {
+    public int solution(String t, String p) {
+        int answer = 0;
+        String arr[] = t.split("");
+        long p2 = Integer.parseInt(p);
+        for(int i = 0;i <= t.length()-p.length();i++){
+            if(t.length() == p.length()){
+                answer = 1;
+                break;
+            }
+            String temp = arr[i];
+            for(int j = i+1;j < p.length() + i;j++){
+                temp += arr[j];
+            }
+            System.out.println(temp);
+            if(Long.parseLong(temp) <= p2){
+                answer++;
+            }
+            temp = "";
+        }
+        return answer;
+    }
 }
