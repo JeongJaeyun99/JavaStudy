@@ -8,32 +8,40 @@ public class Base2 {
 	public static void main(String[] args) {
 		
 		Solution s = new Solution();
-		String t = "3141592";
-		String p = "271";
-		int result = s.solution(t,p);
+		int a = 78;
+		int result = s.solution(a);
 		System.out.println(result);
 	}
 }
 
 class Solution {
-    public int solution(String t, String p) {
+    public int solution(int n) {
         int answer = 0;
-        String arr[] = t.split("");
-        long p2 = Integer.parseInt(p);
-        for(int i = 0;i <= t.length()-p.length();i++){
-            if(t.length() == p.length()){
-                answer = 1;
-                break;
+        int temp = n+1;
+        ArrayList<Integer> list1 = new ArrayList<Integer>();
+        ArrayList<Integer> list2 = new ArrayList<Integer>();
+        while(true){
+            if(n == 1){
+            	String s1 = list1.toString();
+            	String s2 = list2.toString();
+                if(s1.equals(s2)){
+                	answer = temp;
+                    break; 
+                }else{
+                    temp++;
+                    list1.clear();
+                    list2.clear();
+                }
+            }else{
+                int num1 = n % 2;
+                if(num1 == 1){
+                    list1.add(1);
+                }
+                int num2 = temp % 2;    
+                if(num2 == 1){
+                    list2.add(1);
+                }
             }
-            String temp = arr[i];
-            for(int j = i+1;j < p.length() + i;j++){
-                temp += arr[j];
-            }
-            System.out.println(temp);
-            if(Long.parseLong(temp) <= p2){
-                answer++;
-            }
-            temp = "";
         }
         return answer;
     }
