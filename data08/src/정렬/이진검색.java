@@ -16,7 +16,7 @@ public class 이진검색 {
 		int search[] = {1,7,6};
 		StringBuilder sb = new StringBuilder();
 		for (int find : search) {
-			sb.append(" - " + Arrays.binarySearch(num,find));
+			sb.append(Arrays.binarySearch(num,find) + "번째 인덱스에 " + find + "가 있습니다.\n");
 		}
 		System.out.println(sb);
 	}
